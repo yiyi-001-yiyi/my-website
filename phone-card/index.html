@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>手机卡</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .blur-container {
+            position: relative;
+            margin: 20px 0;
+        }
+        #cardImage {
+            width: 100%;
+            border-radius: 10px;
+            filter: blur(15px);
+            transition: 0.5s;
+        }
+        .blur-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            border-radius: 10px;
+        }
+        .warning-card {
+            background: #4CAF50;
+            width: 90%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            color: white;
+            text-align: left;
+        }
+        .warning-title {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .warning-title img {
+            width: 20px;
+            height: 20px;
+        }
+        .warning-content {
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .warning-content p {
+            margin: 8px 0;
+            text-indent: 2em;
+        }
+        .detail-content {
+            display: none;
+            padding: 20px 0;
+        }
+        .apply-btn {
+            display: block;
+            width: 80%;
+            margin: 30px auto;
+            padding: 12px;
+            background: #FF4D4F;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        .apply-btn:hover {
+            background: #ff7875;
+        }
+        .confirm-btn {
+            background: #1890ff;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: block;
+        }
+        .confirm-btn:hover {
+            background: #40a9ff;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:#1890FF;text-align:center;">手机卡</h1>
+    
+    <div class="blur-container">
+        <img id="cardImage" src="card-image.jpg" alt="手机卡">
+        <div class="blur-cover" id="blurCover">
+            <div class="warning-card">
+                <div class="warning-title">
+                    <span>温馨提示</span>
+                    <img src="icon.png" alt="提示图标">
+                </div>
+                <div class="warning-content">
+                    <p>公安部提示：请勿将已登记您本人身份证信息的号</p>
+                    <p>卡用于诈骗等不合法行为。</p>
+                    <p>请勿将号卡进行转卖、租借他人使用。</p>
+                    <p>请及时挂失、注销已丢失号卡，保护个人信息安全。</p>
+                    <p>涉嫌诈骗等违法犯罪行为的号码，实名登记机主需承担法律责任。</p>
+                </div>
+                <button onclick="showDetails()" class="confirm-btn">
+                    我已知晓并同意
+                </button>
+            </div>
+        </div>
+    </div>
+    
+  <div class="detail-content" id="detailContent">
+    <a href="https://你的办理链接.com" class="apply-btn">立即办理</a>
+    <button onclick="showOrderForm()" class="apply-btn">订单查询</button>
+    <div id="orderForm" style="display:none;">
+        <input type="text" id="phoneNumber" placeholder="请输入预留手机号">
+        <button onclick="queryOrder()" class="confirm-btn">查询</button>
+    </div>
+    <div id="orderResult"></div>
+</div>
+
+    <script>
+        function showDetails() {
+            document.getElementById('cardImage').style.filter = 'blur(0)';
+            document.getElementById('blurCover').style.display = 'none';
+            document.getElementById('detailContent').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
